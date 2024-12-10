@@ -97,6 +97,7 @@ const Navbar = () => {
                   <HeartIcon width={24} height={24} color="white" />
                 </Link>
               </li>
+              
               <li className="hidden lg:block nav-item dropdown ">
                 <Link
                   // href={loggedIn ? urls.profile : urls.login}
