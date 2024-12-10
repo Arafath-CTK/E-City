@@ -1,10 +1,19 @@
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import DefaultLayout from "./layouts/DefaultLayout";
 import "./App.css";
+import Home from "./pages/Home";
+import About from "./pages/About";
 
 function App() {
   return (
-    <>
-      <h1 className="text-3xl font-bold underline">Tailwind Config done</h1>
-    </>
+    <Router>
+      <DefaultLayout>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+        </Routes>
+      </DefaultLayout>
+    </Router>
   );
 }
 
