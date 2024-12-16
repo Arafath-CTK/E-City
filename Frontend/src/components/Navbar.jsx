@@ -1,3 +1,8 @@
+// THINGS TO ADD  //
+// mobileNav
+// navbar multilevel dropdown
+// hover effects for all user interactive elemets
+
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import UserIcon from "./icons/user";
@@ -13,8 +18,8 @@ const Navbar = () => {
   };
 
   return (
-    <header className="w-full">
-      <nav className="nav-header px-4 border-b w-full flex justify-between items-center py-5">
+    <header className="w-full relative">
+      <nav className="nav-header px-5 sm:px-10 md:px-16 lg:px-20 xl:px-24 border-b w-full flex justify-between items-center py-5">
         <div className="flex justify-center items-center md:hidden">
           <button
             onClick={handleToggleNavbar}
@@ -57,7 +62,27 @@ const Navbar = () => {
           </button>
         </div>
 
-        <div className="flex justify-center items-center md:justify-start">
+        {/* Mobile menu */}
+        {openNavbar && (
+          <div className="absolute top-16 left-0  w-full bg-gray-800 text-white h-screen z-10 md:hidden">
+            <div className="flex flex-col items-start p-6 space-y-4">
+              <a href="#" className="text-lg font-medium hover:text-gray-300">
+                Home
+              </a>
+              <a href="#" className="text-lg font-medium hover:text-gray-300">
+                About
+              </a>
+              <a href="#" className="text-lg font-medium hover:text-gray-300">
+                Services
+              </a>
+              <a href="#" className="text-lg font-medium hover:text-gray-300">
+                Contact
+              </a>
+            </div>
+          </div>
+        )}
+
+        <div className="flex justify-center items-center md:justify-start md:w-1/4">
           <Link className="nav-brand m-0" href="/home">
             {/* <div className="position-relative h-full overflow-hidden">
                     <img
@@ -73,10 +98,10 @@ const Navbar = () => {
           </Link>
         </div>
 
-        <div className="hidden md:flex">
+        <div className="hidden md:flex w-2/5">
           <input
             // ref={searchInputRef}
-            className="  w-96 border border-gray-300 rounded-md px-2 py-3 focus:outline-none"
+            className="  w-full border border-gray-300 rounded-md px-2 py-3 focus:outline-none"
             type="search"
             placeholder="Search for products..."
             aria-label="Search"
@@ -84,7 +109,7 @@ const Navbar = () => {
           />
         </div>
 
-        <div className="flex items-center">
+        <div className="flex w-1/4 items-center justify-end">
           <ul className="m-0 p-0 flex justify-end items-center gap-7">
             <li className="hidden md:block">
               <Link
